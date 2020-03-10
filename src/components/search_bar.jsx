@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 
 class SearchBar extends Component {
+  shouldComponentUpdate() {
+    return false;
+  }
+
   handleChange = (event) => {
-    this.props.searchFunction(event.target.value);
+    if (event.target.value) {
+      this.props.searchFunction(event.target.value);
+    }
   }
 
   render() {

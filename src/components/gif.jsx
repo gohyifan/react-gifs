@@ -4,9 +4,14 @@
 import React, { Component } from 'react';
 
 class Gif extends Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextProps.id !== this.props.id;
+  }
+
   handleClick = () => {
-    if (this.props.selectGif) {
-      this.props.selectGif(this.props.id);
+    const { selectGif, id } = this.props;
+    if (selectGif) {
+      selectGif(id);
     }
   }
 
